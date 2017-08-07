@@ -25,9 +25,13 @@ const LaunchSchema = mongoose.Schema({
 const Launches = restful.model('launches', LaunchSchema);
 Launches.methods(['get', 'put', 'post', 'delete']);
 Launches.register(app, '/api/launches');
+const Launch = mongoose.model('Launch', LaunchSchema);
+
+let date = new Date();
+date = date.toISOString().slice(0, 10);
 
 const launchData = request({
-    url: 'https://launchlibrary.net/1.2/launch/2017-08-07',
+    url: `https://launchlibrary.net/1.2/launch/${date}?limit=200`,
     headers: {
       'Accept': 'application/json',
       'User-Agent': 'request'
@@ -36,6 +40,24 @@ const launchData = request({
     console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
+    let length = JSON.parse(body).count;
+    Launch.remove({}, function (err, small) {
+      if (err) { return handleError(err) };
+    });
+    for (let i = 0; i < length; i++) {
+      let launchInfo = {
+        name: JSON.parse(body).launches[i].name,
+        agency: JSON.parse(body).launches[i].rocket.agencies[0].name,
+        location: JSON.parse(body).launches[i].location.name,
+        time: JSON.parse(body).launches[i].windowstart
+      }
+      let launch = new Launch(launchInfo);
+      launch.save(function (err) {
+        if (err) {
+          return handleError(err);
+        }
+      });
+    }
   });
 
 app.listen(3000);
