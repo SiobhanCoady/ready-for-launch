@@ -7,6 +7,7 @@
     "node-restful": "latest",
     "body-parser": "latest",
     "method-override": "latest",
-    "morgan": "latest"
+    "morgan": "latest",
+    "request": "latest"
   }
 }
