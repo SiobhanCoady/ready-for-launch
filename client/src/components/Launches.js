@@ -24,10 +24,10 @@ class Launches extends React.Component {
     return this.state.launches.map((launch) => {
       return (
         <div className="Launch" key={ launch.id }>
-          <p>{ launch.name }</p>
-          <p>{ launch.agency }</p>
-          <p>{ launch.location }</p>
-          <p>{ launch.time }</p>
+          <p><strong>Rocket Name:</strong> { launch.name }</p>
+          <p><strong>Agency:</strong> { launch.agency }</p>
+          <p><strong>Location:</strong> { launch.location }</p>
+          <p><strong>Date:</strong> { launch.time.slice(0, 10) }</p>
         </div>
       );
     });
@@ -36,7 +36,7 @@ class Launches extends React.Component {
   render() {
     return (
       <div className="Launches">
-        <h2>Upcoming Launches</h2>
+        <h2 className="Launches-header">Upcoming Rocket Launches</h2>
         { this._renderLaunches() }
       </div>
     );

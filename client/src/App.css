@@ -1,25 +1,32 @@
 .App {
+  background: url('./images/stars.jpg');
+  background-size: 100%;
+  background-attachment: fixed;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #323232;
+  height: 70px;
   padding: 20px;
+  color: lightgrey;
+}
+
+.Launches-header {
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.Launches {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Launch {
   background-color: lightgrey;
   border: thin black solid;
   border-radius: 10px;
+  margin: 20px;
+  width: 75%;
 }
