@@ -9,12 +9,19 @@
 .App-header {
   background-color: #323232;
   height: 70px;
-  padding: 20px;
+  padding: 20px 0px;
   color: lightgrey;
+}
+
+.Rocket-image {
+  height: 35px;
+  width: auto;
+  padding: 0px 20px;
 }
 
 .Launches-header {
   color: white;
+  padding-top: 20px;
 }
 
 .Launches {

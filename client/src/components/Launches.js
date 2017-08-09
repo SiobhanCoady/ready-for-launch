@@ -36,7 +36,7 @@ class Launches extends React.Component {
   render() {
     return (
       <div className="Launches">
-        <h2 className="Launches-header">Upcoming Rocket Launches</h2>
+        <h2 className="Launches-header">50 Upcoming Rocket Launches</h2>
         { this._renderLaunches() }
       </div>
     );

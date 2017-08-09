@@ -36,15 +36,15 @@ let date = new Date();
 date = date.toISOString().slice(0, 10);
 
 const launchData = request({
-    url: `https://launchlibrary.net/1.2/launch/${date}?limit=200`,
+    url: `https://launchlibrary.net/1.2/launch/${date}?limit=50`,
     headers: {
       'Accept': 'application/json',
       'User-Agent': 'request'
     }
   }, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
+    console.log('error:', error);
+    console.log('statusCode:', response && response.statusCode);
+    console.log('body:', JSON.parse(body));
     let length = JSON.parse(body).count;
     Launch.remove({}, function (err, small) {
       if (err) { return handleError(err) };

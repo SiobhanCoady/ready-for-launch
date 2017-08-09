@@ -7,7 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Ready for Launch</h1>
+          <h1>
+            <img className="Rocket-image" src={require("./images/rocket.png")} />
+            Ready for Launch
+            <img className="Rocket-image" src={require("./images/rocket.png")} />
+          </h1>
         </div>
         <div className="App-intro">
           <Launches />
